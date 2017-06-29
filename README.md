@@ -50,8 +50,9 @@ The different options to choose from are:
     - update: changes between branches.
     - remove: remove files and push changes to the repository.
     - merge: combine different branches.
-
 - **Mercurial repository** - Select the CI with the server and repository you wish to manage.
+
+The service will return the console output.
 
 Configuration example:
 
@@ -64,4 +65,4 @@ Configuration example:
     Errors: fail
     Output: 
 
-    NOTE: when adding files, the path is considering you are located at the local working directory of the project.
+NOTE: when adding files, the path is considering you are located at the local working directory of the project.
