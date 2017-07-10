@@ -2,22 +2,22 @@
 
     var commandComboBox = Cla.ui.comboBox({
         name: 'command',
-        fieldLabel: 'Command',
+        fieldLabel: _('Command'),
         data: [
-            ['status','status'],
-            ['log','log'],
-            ['push','push'],
-            ['pull','pull'],
-            ['add','add'],
-            ['commit','commit'],
-            ['update','update'],
-            ['diff','diff'],
-            ['branch','branch'],
-            ['branches','branches'],
-            ['merge','merge'],
-            ['tag','tag'],
-            ['tags','tags'],
-            ['remove','remove']
+            ['status',_('status')],
+            ['log',_('log')],
+            ['push',_('push')],
+            ['pull',_('pull')],
+            ['add',_('add')],
+            ['commit',_('commit')],
+            ['update',_('update')],
+            ['diff',_('diff')],
+            ['branch',_('branch')],
+            ['branches',_('branches')],
+            ['merge',_('merge')],
+            ['tag',_('tag')],
+            ['tags',_('tags')],
+            ['remove',_('remove')]
         ],
         value: params.data.command || 'status',
         allowBlank: false,
@@ -79,7 +79,7 @@
         fieldLabel: _('Files paths'),
         name: 'filesPaths',
         value: params.data.filesPaths,
-        description: 'Files paths',
+        description: _('Files paths'),
         default_value: '.',
         hidden: ((params.data.command != 'add') || (params.data.command != 'remove') || (params.data.command != 'commit'))
     });

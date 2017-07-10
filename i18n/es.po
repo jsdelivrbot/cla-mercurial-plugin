@@ -1,0 +1,139 @@
+#: init/mercurial-service.js
+msgid "Mercurial task"
+msgstr "Tarea de Mercurial"
+
+#: init/mercurial-service.js
+msgid "Mercurial CI doesn't exist"
+msgstr "El CI de Mercurial no existe"
+
+#: init/mercurial-service.js
+msgid "Server not selected"
+msgstr "Ningún servidor seleccionado"
+
+#: init/mercurial-service.js
+msgid "Local path not set"
+msgstr "No se ha especificado una ruta local"
+
+#: init/mercurial-service.js
+msgid "Nothing selected"
+msgstr "Nada seleccionado"
+
+#: init/mercurial-service.js
+msgid "No option selected"
+msgstr "Ninguna opción seleccionada"
+
+#: init/mercurial-service.js
+msgid "mercurial task"
+msgstr "Tarea de Mercurial"
+
+#: init/mercurial-service.js
+msgid "Error merging. Manual fix needed. "
+msgstr "Error al fusionar. Arreglo manual necesario. "
+
+#: init/mercurial-service.js
+msgid "Task "
+msgstr "Tarea "
+
+#: init/mercurial-service.js
+msgid " finished."
+msgstr " finalizado."
+
+#: public/form/mercurial-ci-form.js
+msgid "Server"
+msgstr "Servidor"
+
+#: public/form/mercurial-ci-form.js
+msgid "Local path for repository"
+msgstr "Ruta local para el repositorio"
+
+#: public/form/mercurial-ci-form.js
+msgid "Repository URL"
+msgstr "URL del repositorio"
+
+#: public/form/mercurial-service-form.js
+msgid "Command"
+msgstr "Comando"
+
+#: public/form/mercurial-service-form.js
+msgid "status"
+msgstr "Estado"
+
+#: public/form/mercurial-service-form.js
+msgid "log"
+msgstr "Logs"
+
+#: public/form/mercurial-service-form.js
+msgid "push"
+msgstr "Subir"
+
+#: public/form/mercurial-service-form.js
+msgid "pull"
+msgstr "Bajar"
+
+#: public/form/mercurial-service-form.js
+msgid "add"
+msgstr "Añadir"
+
+#: public/form/mercurial-service-form.js
+msgid "commit"
+msgstr "Commit"
+
+#: public/form/mercurial-service-form.js
+msgid "update"
+msgstr "Actualizar"
+
+#: public/form/mercurial-service-form.js
+msgid "diff"
+msgstr "Diferencias"
+
+#: public/form/mercurial-service-form.js
+msgid "branch"
+msgstr "Rama"
+
+#: public/form/mercurial-service-form.js
+msgid "branches"
+msgstr "Ramas"
+
+#: public/form/mercurial-service-form.js
+msgid "merge"
+msgstr "Fusionar"
+
+#: public/form/mercurial-service-form.js
+msgid "tag"
+msgstr "Etiquetar"
+
+#: public/form/mercurial-service-form.js
+msgid "tags"
+msgstr "Etiquetas"
+
+#: public/form/mercurial-service-form.js
+msgid "remove"
+msgstr "Borrar"
+
+#: public/form/mercurial-service-form.js
+msgid "Mercurial repository"
+msgstr "Repositorio de Mercurial"
+
+#: public/form/mercurial-service-form.js
+msgid "Commit message"
+msgstr "Mensage para el commit"
+
+#: public/form/mercurial-service-form.js
+msgid "Branch name"
+msgstr "Nombre de la rama"
+
+#: public/form/mercurial-service-form.js
+msgid "Tag name"
+msgstr "Nombre de la etiqueta"
+
+#: public/form/mercurial-service-form.js
+msgid "Origin branch"
+msgstr "Rama de origen"
+
+#: public/form/mercurial-service-form.js
+msgid "Merging branch"
+msgstr "Rama de fusión"
+
+#: public/form/mercurial-service-form.js
+msgid "Files paths"
+msgstr "Rutas de archivos"

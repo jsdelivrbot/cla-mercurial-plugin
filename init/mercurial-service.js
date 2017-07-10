@@ -1,6 +1,6 @@
 var reg = require("cla/reg");
 reg.register('service.mercurial.task', {
-    name: 'Mercurial task',
+    name: _('Mercurial task'),
     icon: '/plugin/cla-mercurial-plugin/icon/mercurial.svg',
     form: '/plugin/cla-mercurial-plugin/form/mercurial-service-form.js',
     handler: function(ctx, params) {
@@ -27,23 +27,23 @@ reg.register('service.mercurial.task', {
             mid: params.mercurialRepo + ""
         });
         if (!mercurialRepo) {
-            log.fatal("Mercurial CI doesn't exist");
+            log.fatal(_("Mercurial CI doesn't exist"));
         }
 
         var server = mercurialRepo.localRepoServer || "";
         var localPath = mercurialRepo.localPath || "";
         if (server == "") {
-            log.fatal("Server not selected");
+            log.fatal(_("Server not selected"));
         }
         if (localPath == "") {
-            log.fatal("Local path not set");
+            log.fatal(_("Local path not set"));
         }
 
 
         commonCommand = "cd " + localPath + " && hg " + commandOption;
         if (commandOption == "add" || commandOption == "remove") {
             if (filesPaths.length <= 0) {
-                log.fatal("Fail")
+                log.fatal(_("Nothing selected"));
             }
             fullCommand = commonCommand + " " + filesPaths.join(" ") + ' && hg commit -m "' + commitMsg + '" && hg push';
         } else if (commandOption == "commit") {
@@ -66,12 +66,12 @@ reg.register('service.mercurial.task', {
             fullCommand = "cd " + localPath + " && hg update " + originBranch + " && export HGMERGE=merge && hg merge " + mergingBranch +
                 ' && hg commit -m "Merge branches ' + originBranch + " and " + mergingBranch + '" && hg push';
         } else {
-            log.fatal("No option selected");
+            log.fatal(_("No option selected"));
         }
 
         function remoteCommand(params, command, server, errors) {
             var output = reg.launch('service.scripting.remote', {
-                name: 'mercurial task',
+                name: _('mercurial task'),
                 config: {
                     errors: errors,
                     server: server,
@@ -92,11 +92,11 @@ reg.register('service.mercurial.task', {
         commandLaunch = remoteCommand(params, fullCommand, server, errors);
 
         if ( commandOption == "merge" && ((commandLaunch.rc != 0 && params.errors != "custom") || (params.errors == "custom" && params.rcOk != commandLaunch.rc))){
-            log.fatal("Error merging. Manual fix needed. " , response)
+            log.fatal(_("Error merging. Manual fix needed. ") , response)
         }
 
         response = commandLaunch.output;
-        log.info("Task " + commandOption + " finished.", response)
+        log.info(_("Task ") + commandOption + _(" finished."), response)
 
         return response;
 
