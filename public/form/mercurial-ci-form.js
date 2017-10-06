@@ -4,7 +4,7 @@
 
     var localRepoServerCombo = Cla.ui.ciCombo({
         name: 'localRepoServer',
-        class: 'generic_server',
+        role: 'Server',
         fieldLabel: _('Server'),
         value: params.rec.localRepoServer || '',
         with_vars: 1,
