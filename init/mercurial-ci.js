@@ -5,7 +5,7 @@ ci.createRole("Mercurial");
 ci.createClass("mercurialRepository", {
     form: '/plugin/cla-mercurial-plugin/form/mercurial-ci-form.js',
     icon: '/plugin/cla-mercurial-plugin/icon/mercurial.svg',
-    roles: ["Mercurial"],
+    roles: ["Mercurial", "ClariveSE"],
     has: {
         localPath: {
             is: "rw",

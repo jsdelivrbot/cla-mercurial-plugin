@@ -3,6 +3,60 @@ reg.register('service.mercurial.task', {
     name: _('Mercurial task'),
     icon: '/plugin/cla-mercurial-plugin/icon/mercurial.svg',
     form: '/plugin/cla-mercurial-plugin/form/mercurial-service-form.js',
+    rulebook: {
+        moniker: 'mercurial_task',
+        description: _('Executes Mercurial commands'),
+        required: [ 'mercurial_repo', 'command' ],
+        allow: ['mercurial_repo', 'command', 'commit_msg', 'branch_name', 'tag_name', 'origin_branch'
+        , 'merging_branch', 'files_paths', 'errors'],
+        mapper: {
+            'mercurial_repo': 'mercurialRepo',
+            'commit_msg': 'commitMsg',
+            'branch_name': 'branchName',
+            'tag_name': 'hgTagName',
+            'origin_branch': 'originBranch',
+            'merging_branch': 'mergingBranch',
+            'files_paths': 'filesPaths'
+        },
+        examples: [{
+            mercurial_task: {
+                mercurial_repo: 'mercurial_resourcce',
+                command: 'status'
+            }
+        },{
+            mercurial_task: {
+                mercurial_repo: 'mercurial_resourcce',
+                command: 'add',
+                commit_msg: 'add',
+                files_paths: ['src/new_file.txt', '/build/another.file']
+            }
+        },{
+            mercurial_task: {
+                mercurial_repo: 'mercurial_resourcce',
+                command: 'update',
+                branch_name: 'another_branch'
+            }
+        },{
+            mercurial_task: {
+                mercurial_repo: 'mercurial_resourcce',
+                command: 'merge',
+                origin_branch: 'new_branch',
+                merging_branch: 'master_branch'
+            }
+        },{
+            mercurial_task: {
+                mercurial_repo: 'mercurial_resourcce',
+                command: 'tag',
+                tag_name: 'new_tag'
+            }
+        },{
+            mercurial_task: {
+                mercurial_repo: 'mercurial_resourcce',
+                command: 'branch',
+                branch_name: 'new_branch'
+            }
+        }]
+    },
     handler: function(ctx, params) {
 
         var ci = require("cla/ci");
@@ -13,7 +67,7 @@ reg.register('service.mercurial.task', {
             commandLaunch,
             commonCommand,
             response;
-        var filesPaths = params.filesPaths;
+        var filesPaths = params.filesPaths || [];
         var commandOption = params.command || "";
         var commitMsg = params.commitMsg || "";
         var branchName = params.branchName || "";
@@ -32,6 +86,7 @@ reg.register('service.mercurial.task', {
 
         var server = mercurialRepo.localRepoServer || "";
         var localPath = mercurialRepo.localPath || "";
+        var user = mercurialRepo.user || "";
         if (server == "") {
             log.fatal(_("Server not selected"));
         }
@@ -69,12 +124,13 @@ reg.register('service.mercurial.task', {
             log.fatal(_("No option selected"));
         }
 
-        function remoteCommand(params, command, server, errors) {
+        function remoteCommand(params, command, server, errors, user) {
             var output = reg.launch('service.scripting.remote', {
                 name: _('mercurial task'),
                 config: {
                     errors: errors,
                     server: server,
+                    user: user,
                     path: command,
                     output_error: params.output_error,
                     output_warn: params.output_warn,
@@ -89,7 +145,7 @@ reg.register('service.mercurial.task', {
             return output;
         }
 
-        commandLaunch = remoteCommand(params, fullCommand, server, errors);
+        commandLaunch = remoteCommand(params, fullCommand, server, errors, user);
 
         if ( commandOption == "merge" && ((commandLaunch.rc != 0 && params.errors != "custom") || (params.errors == "custom" && params.rcOk != commandLaunch.rc))){
             log.fatal(_("Error merging. Manual fix needed. ") , response)
