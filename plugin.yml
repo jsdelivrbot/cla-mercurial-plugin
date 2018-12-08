@@ -1,7 +1,7 @@
 name: Mercurial Plugin
 description: Mercurial SCM plugin will allow you to manage your repositories for Mercurial from a Clarive instance.
 version: 1.0
-icon: https://cdn.rawgit.com/clarive/cla-mercurial-plugin/master/public/icon/mercurial.svg?sanitize=true
+icon: https://cdn.jsdelivr.net/gh/clarive/cla-mercurial-plugin@master/public/icon/mercurial.svg?sanitize=true
 url: https://github.com/clarive/cla-mercurial-plugin
 requires:
   - clarive_version: 6.8 <= version
